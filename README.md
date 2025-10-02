@@ -59,8 +59,8 @@ C:\xampp\htdocs\sistema_cantina
 
 2. Inicie o XAMPP e ative os módulos:
 
-- Apache ✅
-- MySQL ✅
+    - Apache ✅
+    - MySQL ✅
 
 3. Acesse o phpMyAdmin pelo navegador:
 
@@ -153,8 +153,8 @@ C:\xampp\htdocs\sistema_cantina
 
 2. Start XAMPP and enable the modules:
 
-- Apache ✅
-- MySQL ✅
+    - Apache ✅
+    - MySQL ✅
 
 3. Access phpMyAdmin in your browser:
 
