@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Login</title>
+  </head>
+<body>
+    <style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    justify-content: center;
+    background: #eceaff;
+}
+
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+img {
+    width: 210px; 
+    height: 180px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 220px auto;
+    padding: 20px;
+    background-color: #F5F5F2;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items:center;
+}
+
+h1 {
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    padding: 10px;
+    background-color: #0f6fc5;
+    color: #FFFFFf;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+    
+      
+.logo-image {
+  width: 210px; 
+    height: 180px;
+    margin-top: -60px;
+}
+
+input[type="submit"]:hover {
+    background-color: none;
+}
+
+  </style>
+
+  <div class="container">
+  <img class="top-image top center logo-image" src="icones/gaviao.png" alt="Logo1">
+    <h1>Login</h1>
+
+
+
+    <form action="funcoes/login.php" method="post">
+      <input type="text" name="username" placeholder="Usuário" required>
+      <input type="password" name="password" placeholder="Senha" required>
+      <input type="submit" value="Entrar">
+    </form>
+  </div>
+</body>
+</html>
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita o envio do formulário padrão
+        window.location.href = "http://localhost/tccgrupo5/faca_pedido.html";
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Faça seu pedido</title>
+  </head>
+<body>
+    <style>
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background: #eceaff;
+}
+
+nav {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f6fc5;
+    padding: 60px;
+    border-radius: 0 100px 100px 0;
+
+}
+
+.titulo {
+    color: white;
+    font-size: 45px;
+    position: absolute;
+    font-weight: bold;
+    top: 35px;
+    left: 30px;
+
+}
+
+ul { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-right: 15px;
+    display: inline;
+}
+
+h1 {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.menulogo { 
+    background-color: white;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    
+}
+
+.menulogo:hover {
+    scale: 1.05;
+}
+
+.menulogo:active{
+    scale: 0.95;
+} 
+
+.toggle_btn {
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    position: absolute;
+    right: 44px;
+    top: 40px;
+    
+}
+
+.sub-menu-wrap{
+    position: absolute;
+    top: 142%;
+    right: -120%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0s;
+    z-index: 2;
+    
+
+}
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+
+}
+.sub-menu{
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 30px;
+    border: 5px solid;
+    border-color: #0f6fc5;
+
+}
+
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+
+}
+
+.sub-menu-link p{
+    width: 130%;
+    font-size: 15px;
+
+}
+
+.sub-menu-link img{
+    width: 40px;
+    background: #e5e5e5;
+    border-radius: 90%;
+    padding: 9px;
+    margin-right: 15px;
+}
+
+.sub-menu-link span{
+    font-size: 20px;
+    transition: transform 0.5s;
+}
+
+.sub-menu-link:hover span{
+    transform: translate(5px);
+
+}
+
+.sub-menu-link:hover p{
+    font-weight: 600;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Altera para uma coluna em telas menores */
+    align-items: center; /* Centraliza na horizontal em telas menores */
+    margin-top: 10px;
+}
+
+.form {
+    flex: 1;
+    padding: 30px;
+    max-width: 500px; /* Define uma largura máxima para o formulário */
+        }
+
+.input-group {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px; /* Espaçamento inferior entre rótulo e entrada */
+}
+
+.input-group input {
+    width: 100%; /* Preenche a largura do pai */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.bottom-button {
+    font-weight: bold;
+    font-size: 30px;
+    background-color: orange;
+    color: white;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 100px; /* Ajuste para subir um pouco */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+@media (max-width: 997px) {
+  .menulogo {
+    display: none;
+  } 
+
+  .toggle_btn {
+    display: block;
+
+  }
+
+  .sub-menu-wrap {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .sub-menu-wrap {
+    right: 0px;
+    top: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .titulo {
+    font-size: 30px;
+    top: 42px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  nav {
+    max-width: 72%;
+  }
+}
+
+@media (max-width: 576px) {
+  .toggle_btn {
+    right: 34px;             
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form {
+    padding: 20px;
+  }
+
+  .input-group label {
+    font-size: 18px;
+  }
+
+  .input-group input {
+    font-size: 18px;
+  }
+        
+  .bottom-button {
+    font-size: 24px;
+  }
+}
+
+.icon-buttons {
+            display: flex;
+            justify-content: flex-start;
+            /* Mova os botões para a esquerda */
+            align-items: center;
+            background-color: white;
+            padding: 5px;
+            border-radius: none;
+        }
+
+        .icon-button {
+            background-color: #f5f5f5;
+            border-radius: 90px;
+            /* Tornar os botões quadrados */
+            width: 110px;
+            height: 110px;
+            margin-right: 90px;
+            display: flex;
+            justify-content: top;
+            align-items: top;
+        }
+
+        .icon-button img {
+            width:100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+
+.button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 500px;
+            margin: 5x;
+            margin-top: 100px;
+            
+        }
+
+        .button {
+            margin: 5px;
+            text-align: center;
+        }
+
+        .label {
+        
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        
+        #container {
+            margin-top:250px;
+            width:400px;
+            text-align: center;
+            float: right; /* Alinhar à direita */
+            
+           
+        }
+        #image {
+            max-width: 100%;
+            margin-top: -50px; /* Ajuste conforme necessário */
+            display: block; /* Isso ajuda a garantir que as margens se apliquem corretamente */
+            margin-left: auto;
+            margin-right: auto;
+    }
+
+        .buttontbl {
+            background-color: #4CAF50; /* Verde para os botões Adicionar*/
+            color: white;
+            border: none;
+            border-radius: 20px; /* Bordas arredondadas */
+            padding: 15px 40px;
+            cursor: pointer;
+            margin: 25px;
+            
+        }
+        #removeButton {
+            background-color: #FF5733; /* Vermelho para o botão Retirar */
+        }
+        #count {
+            font-size: 30px;
+    
+        }
+        #concluidoButton {
+            background-color: #3498db; /* Azul para o botão Concluído */
+            color: white;
+            border: none;
+            border-radius: 20px; /* Bordas arredondadas */
+            padding: 15px 48px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+      
+        .botao-amarelo {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 80px;          
+            border: none;
+           float: right;
+            cursor: pointer;
+            margin-top: 520px;
+            border-radius: 10px;
+           
+        }
+
+
+        
+    .orange-banner {
+      background-color: #FFA500;
+      padding: 10px 150px;
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      border-radius: 10px;
+      /* Propriedades de posicionamento */
+      position: absolute;
+      top: 280px;
+      left: 14%;
+      transform: translateX(-50%);
+    }
+
+    .orange-banner2 {
+      background-color: #FFA500;
+      padding: 10px 150px;
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      border-radius: 10px;
+      /* Propriedades de posicionamento */
+      position: absolute;
+      top: 505px;
+      left: 14%;
+      transform: translateX(-50%);
+    }
+
+    .orange-banner3 {
+      background-color: orange;
+      padding: 10px 150px;
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      border-radius: 10px;
+      /* Propriedades de posicionamento */
+      position: absolute;
+      top: 744px;
+      left: 14%;
+      transform: translateX(-50%);
+    }
+
+    .orange-banner4 {
+      background-color: #FFA500;
+      padding: 10px 100px;
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      border-radius: 10px;
+      /* Propriedades de posicionamento */
+      position: absolute;
+      top: 360px;
+      left: 88%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    .button-container .button button {
+    border: 1px solid black; /* Cor azul (blue) para a borda */
+}
+#image {
+    border: 1px solid black; /* Cor azul (blue) para a borda */
+}
+
+    #botao1 img,
+    #botao2 img, 
+    #botao3 img {     
+    
+    max-width: 100%; /* Define a largura máxima como 100% do contêiner pai */
+    height: 90px; /* Mantém a proporção da imagem */
+
+  }
+
+    #botao4 img,
+    #botao5 img, 
+    #botao6 img {   
+
+    max-width: 100%; /* Define a largura máxima como 100% do contêiner pai */
+    height: 100px; /* Mantém a proporção da imagem */
+
+  }
+
+    #botao7 img,
+    #botao8 img,
+    #botao9 img {
+    max-width: 100%; /* Define a largura máxima como 100% do contêiner pai */
+    height: 100px; /* Mantém a proporção da imagem */
+
+  }
+ 
+
+  </style>
+<div class="hero">
+    <div class="titulo">
+      <label>Faça seu Pedido</label>
+   </div>
+
+   <nav>
+      <div class="toggle_btn">
+      <i class="fa-solid fa-bars"></i>
+      <div class="sub-menu-wrap" id="subMenu">
+      <div class="sub-menu">
+  
+        <a href="http://localhost/tccgrupo5/dados_pessoais.html" class="sub-menu-link">
+            <img src="icones/conf.png">
+            <p>Configurações da Conta</p>
+            <span>>
+            </span>
+            </a>
+  
+            <a href="http://localhost/tccgrupo5/faca_pedido.html" class="sub-menu-link">
+              <img src="icones/lanches.png">
+              <p>Lanches</p>
+              <span>>
+              </span>
+              </a>
+  
+                    <a href="http://localhost/tccgrupo5/termos.html" class="sub-menu-link">
+                        <img src="icones/doc.png">
+                        <p>Políticas de Privacidade</p>
+                        <span>></span>
+                    </a>
+  
+  
+                    <a href="http://localhost/tccgrupo5/inicial.html" class="sub-menu-link">
+                <img src="icones/exit.png">
+                <p>Sair</p>
+                <span>></span>
+                </a>
+
+    </div>
+ </div>
+  </nav>
+   </div>
+    </div>
+     </div>
+
+     <div class="icon-buttons">
+
+        <div class="icon-button">
+        <img src="icones/hamburguer.png" alt="Hamburguer Icon">
+        </div>
+
+        <div class="icon-button">
+        <img src="icones/suco2.png" alt="Juice Icon">
+        </div>
+
+        <div class="icon-button">
+        <img src="icones/doce.png" alt="Candy Icon">
+        </div>
+    </div>
+   
+    <div class="orange-banner4">
+        QUANTIDADE
+      </div>
+
+    <div id="container">
+        <form action="funcoes/adicionar_carrinho.php" method="post">
+            <img id="image" src="sua_imagem.jpg" alt="Imagem">
+            <br>
+            
+            <a id="addButton" class="buttontbl">+</a>
+            <span id="count">0</span>
+            <input type="hidden" id="txt_NomeLanche" name="txt_NomeLanche" value="0">
+            <input type="hidden" id="txt_Quantidade" name="txt_Quantidade" value="0">
+            <input type="hidden" id="txt_preço" name="txt_preço" value="0">
+            <a id="removeButton" class="buttontbl">-</a>
+            <br>
+            
+            <input type="submit" value="Adicionar ao carrinho" id="concluidoButton" name="btnconcluido">
+        </form>
+    </div>
+
+    <button class="botao-amarelo" onclick="redirecionarParaSite()">FINALIZAR</button>
+
+
+    <div class="orange-banner">
+        SALGADOS
+      </div>
+
+     <div class="button-container">
+      <div class="button">
+        <button id="botao1" data-nome="Mini pizza"> 
+            <img src="icones/1.png" alt="Imagem">
+        </button>
+          <div class="label1">
+              <label>Mini pizza</label>
+              <label>R$6,00</label>
+              
+          </div>
+      </div>
+      <div class="button">
+          <button id="botao2"data-nome="Coxinha"> 
+            <img src="icones/2.png" alt="Imagem 2 ">
+        </button>
+          <div class="label2">
+              <label>Coxinha</label>
+              <label>R$5,00</label>
+          </div>
+      </div>
+      <div class="button">
+        <button id="botao3"data-nome="Hamburgão"> 
+              <img src="icones/3.png" alt="Imagem 3">
+          </button>
+          <div class="label3">
+              <label>Hamburgão</label>
+              <label>R$6,00</label>
+          </div>
+      </div>
+  </div>
+
+  <div class="orange-banner2">
+    BEBIDAS
+  </div>
+
+  <div class="button-container">
+      <div class="button">
+        <button id="botao4"data-nome="Guaraná"> 
+              <img src="icones/4.png" alt="Imagem 4">
+          </button>
+          <div class="label4">
+              <label>Guaraná</label>
+              <label>R$5,00</label>
+          </div>
+      </div>
+      <div class="button">
+        <button id="botao5"data-nome="Coca Cola"> 
+              <img src="icones/5.png" alt="Imagem 5">
+          </button>
+          <div class="label5">
+              <label>Coca-cola</label>
+              <label>R$6,00</label>
+          </div>
+      </div>
+      <div class="button">
+        <button id="botao6"data-nome="Suco de uva"> 
+              <img src="icones/6.png" alt="Imagem 6">
+          </button>
+          <div class="label6">
+              <label>Suco uva</label>
+              <label>R$5,00</label>
+          </div>
+      </div>
+  </div>
+
+  <div class="orange-banner3">
+    DOCES
+  </div>
+
+  <div class="button-container">
+      <div class="button">
+        <button id="botao7"data-nome="Chocolate"> 
+              <img src="icones/7.png" alt="Imagem 7">
+          </button>
+          <div class="label7">
+              <label>Chocolate</label>
+              <label>R$3,00</label>
+          </div>
+      </div>
+      <div class="button">
+        <button id="botao8"data-nome="Bala 7belo"> 
+              <img src="icones/8.png" alt="Imagem 8">
+            </button> 
+          <div class="label8">
+              <label>Bala 7belo</label>
+              <label>R$2,00</label>
+          </div>
+      </div>
+      <div class="button">
+        <button id="botao9"data-nome="Pirulito"> 
+              <img src="icones/9.png" alt="Imagem 9">
+          </button>
+          <div class="label9">
+              <label>Pirulito 7belo</label>
+              <label>R$2,00</label>
+          </div>
+      </div>
+  </div>
+
+<script>
+        
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+        const subMenuWrap = document.querySelector('subMenu')
+    
+        toggleBtn.onclick = function () {
+            subMenu.classList.toggle('open-menu')
+            const isOpen = subMenu.classList.contains('open-menu')
+    
+            toggleBtnIcon.classList = isOpen
+            ? 'fa-solid fa-xmark'
+            : 'fa-solid fa-bars'
+        }
+    
+
+  // Seleciona elementos do DOM
+        const addButton = document.getElementById('addButton');
+        const removeButton = document.getElementById('removeButton');
+        const countSpan = document.getElementById('count');
+        const quantidadeSpan = document.getElementById('txt_Quantidade');
+        const concluidoButton = document.getElementById('concluidoButton');
+        
+
+        let count = 0; // Inicializa o contador
+
+        // Função para atualizar o contador
+        function updateCounter() {
+            countSpan.textContent = count;
+            quantidadeSpan.value = count;
+        }
+
+        // Manipuladores de eventos para os botões
+        addButton.addEventListener('click', () => {
+            count++;
+            updateCounter();
+        });
+
+        removeButton.addEventListener('click', () => {
+            if (count > 0) {
+                count--;
+                updateCounter();
+            }
+        });
+
+
+    const imageContainer = document.getElementById('image');
+    const botao1 = document.getElementById('botao1');
+    const botao2 = document.getElementById('botao2');
+    const botao3 = document.getElementById('botao3');
+    const botao4 = document.getElementById('botao4');
+    const botao5 = document.getElementById('botao5');
+    const botao6 = document.getElementById('botao6');
+    const botao7 = document.getElementById('botao7');
+    const botao8 = document.getElementById('botao8');
+    const botao9 = document.getElementById('botao9');
+
+    // Define o caminho das imagens correspondentes
+    const imagem1 = "icones/1.png";
+    const imagem2 = "icones/2.png";
+    const imagem3 = "icones/3.png";
+    const imagem4 = "icones/4.png";
+    const imagem5 = "icones/5.png";
+    const imagem6 = "icones/6.png";
+    const imagem7 = "icones/7.png";
+    const imagem8 = "icones/8.png";
+    const imagem9 = "icones/9.png";
+
+    // Função para atualizar a imagem com base no botão clicado
+    function atualizarImagem(caminhoDaImagem) {
+    imageContainer.src = caminhoDaImagem;
+    imageContainer.style.width = "30%"; // Manter a largura máxima como 100%
+    imageContainer.style.height = "100px"; // Permitir ajuste automático da altura
+}
+
+    // Adiciona manipuladores de eventos para os botões de imagem
+    botao1.addEventListener('click', () => {
+        atualizarImagem(imagem1);
+    });
+
+    botao2.addEventListener('click', () => {
+        atualizarImagem(imagem2);
+    });
+
+    botao3.addEventListener('click', () => {
+        atualizarImagem(imagem3);
+    });
+    botao4.addEventListener('click', () => {
+        atualizarImagem(imagem4);
+    });
+
+    botao5.addEventListener('click', () => {
+        atualizarImagem(imagem5);
+    });
+
+    botao6.addEventListener('click', () => {
+        atualizarImagem(imagem6);
+    });
+    botao7.addEventListener('click', () => {
+        atualizarImagem(imagem7);
+    });
+
+    botao8.addEventListener('click', () => {
+        atualizarImagem(imagem8);
+    });
+
+    botao9.addEventListener('click', () => {
+        atualizarImagem(imagem9);
+    });
+    
+// Seleciona o campo txt_NomeLanche
+const txt_NomeLanche = document.getElementById('txt_NomeLanche');
+
+// Função para atualizar o campo com o nome da comida
+function atualizarNomeLanche(nome) {
+    txt_NomeLanche.value = nome;
+}
+
+// Adiciona manipuladores de eventos para os botões de comida
+botao1.addEventListener('click', () => {
+    atualizarNomeLanche(botao1.getAttribute('data-nome'));
+});
+
+botao2.addEventListener('click', () => {
+    atualizarNomeLanche(botao2.getAttribute('data-nome'));
+});
+botao3.addEventListener('click', () => {
+    atualizarNomeLanche(botao3.getAttribute('data-nome'));
+});
+
+botao4.addEventListener('click', () => {
+    atualizarNomeLanche(botao4.getAttribute('data-nome'));
+});
+botao5.addEventListener('click', () => {
+    atualizarNomeLanche(botao5.getAttribute('data-nome'));
+});
+
+botao6.addEventListener('click', () => {
+    atualizarNomeLanche(botao6.getAttribute('data-nome'));
+
+});botao7.addEventListener('click', () => {
+    atualizarNomeLanche(botao7.getAttribute('data-nome'));
+});
+
+botao8.addEventListener('click', () => {
+    atualizarNomeLanche(botao8.getAttribute('data-nome'));
+});
+
+botao9.addEventListener('click', () => {
+    atualizarNomeLanche(botao9.getAttribute('data-nome'));
+});
+        
+        
+        
+        
+        const imageData = localStorage.getItem('imagem');
+        if (imageData) {
+            const imagemEscolhida = document.getElementById('imagemEscolhida');
+            imagemEscolhida.src = imageData;
+        }
+        
+    </script>
+   
+        <script>
+            // Define os preços individuais dos itens
+            const preçoMinipizza = 6.0;
+            const preçoCoxinha = 5.0;
+            const preçoHamburgao = 6.0;
+            const preçoGuarana = 5.0;
+            const preçoCocaCola = 6.0;
+            const preçoSucoUva = 5.0;
+            const preçoChocolate = 3.0;
+            const preço7Belo = 2.0;
+            const preçoPirulito = 2.0;
+        
+            // Função para calcular o preço total
+            function calcularPreçoTotal() {
+                const quantidade = count; // Quantidade de itens selecionados
+                let preçoTotal = 0;
+        
+                // Verifique quais itens foram selecionados e calcule o preço total
+                if (botao1.getAttribute('data-nome') === txt_NomeLanche.value) {
+                    preçoTotal = preçoXSalada * quantidade;
+                } else if (botao2.getAttribute('data-nome') === txt_NomeLanche.value) {
+                    preçoTotal = preçoCoxinha * quantidade;
+                } else if (botao3.getAttribute('data-nome') === txt_NomeLanche.value) {
+                    preçoTotal = preçoHamburgao * quantidade;
+                } else if (botao4.getAttribute('data-nome') === txt_NomeLanche.value) {
+                    preçoTotal = preçoÁgua * quantidade;
+                } else if (botao5.getAttribute('data-nome') === txt_NomeLanche.value) {
+                    preçoTotal = preçoCocaCola * quantidade;
+                } else if (botao6.getAttribute('data-nome') === txt_NomeLanche.value) {
+                    preçoTotal = preçoSucoUva * quantidade;
+                } else if (botao7.getAttribute('data-nome') === txt_NomeLanche.value) {
+                    preçoTotal = preçoTrident * quantidade;
+                } else if (botao8.getAttribute('data-nome') === txt_NomeLanche.value) {
+                    preçoTotal = preço7Belo * quantidade;
+                } else if (botao9.getAttribute('data-nome') === txt_NomeLanche.value) {
+                    preçoTotal = preçoPirulito * quantidade;
+                }
+        
+                // Atualize o campo txt_preço com o preço total
+                document.getElementById('txt_preço').value = preçoTotal.toFixed(2); // Formata para duas casas decimais
+            }
+        
+
+        
+            // Adicione manipuladores de eventos para os botões de comida para atualizar o nome
+            botao1.addEventListener('click', () => {
+                atualizarNomeLanche(botao1.getAttribute('data-nome'));
+            });
+        
+            botao2.addEventListener('click', () => {
+                atualizarNomeLanche(botao2.getAttribute('data-nome'));
+            });
+        
+            botao3.addEventListener('click', () => {
+                atualizarNomeLanche(botao3.getAttribute('data-nome'));
+            });
+        
+            botao4.addEventListener('click', () => {
+                atualizarNomeLanche(botao4.getAttribute('data-nome'));
+            });
+        
+            botao5.addEventListener('click', () => {
+                atualizarNomeLanche(botao5.getAttribute('data-nome'));
+            });
+        
+            botao6.addEventListener('click', () => {
+                atualizarNomeLanche(botao6.getAttribute('data-nome'));
+            });
+        
+            botao7.addEventListener('click', () => {
+                atualizarNomeLanche(botao7.getAttribute('data-nome'));
+            });
+        
+            botao8.addEventListener('click', () => {
+                atualizarNomeLanche(botao8.getAttribute('data-nome'));
+            });
+        
+            botao9.addEventListener('click', () => {
+                atualizarNomeLanche(botao9.getAttribute('data-nome'));
+            });
+        
+            // Use setInterval para verificar e atualizar o preço a cada segundo
+            setInterval(calcularPreçoTotal, 1000);
+        </script>
+<script>
+    function redirecionarParaFinalizarPedido() {
+        // Use window.location.href para redirecionar para o URL desejado
+        window.location.href = "http://localhost/tccgrupo5/finalizar_pedido.php";
+    }
+
+    // Adicione um manipulador de eventos para o botão "Finalizar"
+    const botaoFinalizar = document.querySelector('.botao-amarelo');
+    botaoFinalizar.addEventListener('click', redirecionarParaFinalizarPedido);
+</script>
+</body>
+</html >

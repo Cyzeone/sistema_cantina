@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Termos de uso e Privacidade</title>
+  </head>
+<body>
+    <style>
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background: #eceaff;
+}
+
+nav {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f6fc5;
+    padding: 60px;
+    border-radius: 0 100px 100px 0;
+
+}
+
+.titulo {
+    color: white;
+    font-size: 45px;
+    position: absolute;
+    font-weight: bold;
+    top: 35px;
+    left: 30px;
+
+}
+
+ul { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-right: 15px;
+    display: inline;
+}
+
+h2 {
+  font-size: 20px;
+  text-align: center;
+  padding: 10px 10%;
+}
+
+.menulogo { 
+    background-color: white;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    
+}
+
+.menulogo:hover {
+    scale: 1.05;
+}
+
+.menulogo:active{
+    scale: 0.95;
+} 
+
+.toggle_btn {
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    position: absolute;
+    right: 44px;
+    top: 40px;
+    
+}
+
+.sub-menu-wrap{
+    position: absolute;
+    top: 142%;
+    right: -120%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0s;
+    
+
+}
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+
+}
+.sub-menu{
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 30px;
+    border: 5px solid;
+    border-color: #0f6fc5;
+
+}
+
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+
+}
+
+.sub-menu-link p{
+    width: 130%;
+    font-size: 15px;
+
+}
+
+.sub-menu-link img{
+    width: 40px;
+    background: #e5e5e5;
+    border-radius: 90%;
+    padding: 9px;
+    margin-right: 15px;
+}
+
+.sub-menu-link span{
+    font-size: 20px;
+    transition: transform 0.5s;
+}
+
+.sub-menu-link:hover span{
+    transform: translate(5px);
+
+}
+
+.sub-menu-link:hover p{
+    font-weight: 600;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Altera para uma coluna em telas menores */
+    align-items: center; /* Centraliza na horizontal em telas menores */
+    margin-top: 10px;
+}
+
+.form {
+    flex: 1;
+    padding: 30px;
+    max-width: 500px; /* Define uma largura máxima para o formulário */
+        }
+
+.input-group {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px; /* Espaçamento inferior entre rótulo e entrada */
+}
+
+.input-group input {
+    width: 100%; /* Preenche a largura do pai */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.bottom-button {
+    font-weight: bold;
+    font-size: 30px;
+    background-color: orange;
+    color: white;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 100px; /* Ajuste para subir um pouco */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+@media (max-width: 997px) {
+  .menulogo {
+    display: none;
+  } 
+
+  .toggle_btn {
+    display: block;
+
+  }
+
+  .sub-menu-wrap {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .sub-menu-wrap {
+    right: 0px;
+    top: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .titulo {
+    font-size: 30px;
+    top: 42px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  nav {
+    max-width: 72%;
+  }
+}
+
+@media (max-width: 576px) {
+  .toggle_btn {
+    right: 34px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form {
+    padding: 20px;
+  }
+
+  .input-group label {
+    font-size: 18px;
+  }
+
+  .input-group input {
+    font-size: 18px;
+  }
+        
+  .bottom-button {
+    font-size: 24px;
+  }
+}
+
+
+  </style>
+<div class="hero">
+      <div class="titulo">
+        <label>Termos de Uso e Privacidade</label>
+     </div>
+
+     <nav>
+      <div class="toggle_btn">
+      <i class="fa-solid fa-bars"></i>
+      <div class="sub-menu-wrap" id="subMenu">
+      <div class="sub-menu">
+  
+        <a href="http://localhost/tccgrupo5/dados_pessoais.html" class="sub-menu-link">
+          <img src="icones/conf.png">
+          <p>Configurações da Conta</p>
+          <span>>
+          </span>
+          </a>
+
+          <a href="http://localhost/tccgrupo5/faca_pedido.html" class="sub-menu-link">
+            <img src="icones/lanches.png">
+            <p>Lanches</p>
+            <span>>
+            </span>
+            </a>
+
+                  <a href="http://localhost/tccgrupo5/termos.html" class="sub-menu-link">
+                      <img src="icones/doc.png">
+                      <p>Políticas de Privacidade</p>
+                      <span>></span>
+                  </a>
+
+
+                  <a href="http://localhost/tccgrupo5/inicial.html" class="sub-menu-link">
+              <img src="icones/exit.png">
+              <p>Sair</p>
+              <span>></span>
+              </a>
+
+</div>
+ </div>
+  </nav>
+   </div>
+    </div>
+     </div>
+
+<script>
+        
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+        const subMenuWrap = document.querySelector('subMenu')
+    
+        toggleBtn.onclick = function () {
+            subMenu.classList.toggle('open-menu')
+            const isOpen = subMenu.classList.contains('open-menu')
+    
+            toggleBtnIcon.classList = isOpen
+            ? 'fa-solid fa-xmark'
+            : 'fa-solid fa-bars'
+        }
+
+    </script>
+      <div class="container">
+        <h2>
+            1. Uso do Aplicativo<br>
+            1.1. Você deve ter pelo menos 18 anos de idade ou possuir a permissão de um responsável legal para utilizar nosso aplicativo.<br>
+            1.2. O aplicativo de Fila de Cantina é destinado ao uso comercial dentro do respectivo colégio.<br>
+            1.3. Você concorda em fornecer informações precisas e atualizadas ao se registrar no aplicativo e em mantê-las atualizadas ao longo do uso.<br><br>
+
+            2. Reserva de Pedidos<br>
+            2.1. Nosso aplicativo permite que você reserve pedidos em cantinas participantes. No entanto, a reserva está sujeita à disponibilidade dos produtos.<br>
+            2.2. Após a reserva, você é responsável por comparecer à cantina no horário especificado. Não comparecer à cantina pode resultar na perda da reserva.<br><br>
+
+            3. Cancelamento e Reembolso<br>
+            3.1. Você pode cancelar sua reserva de pedido dentro dos prazos estipulados pela cantina e conforme indicado no aplicativo.<br>
+            3.2. O reembolso de pagamentos feitos por reservas canceladas está sujeito às políticas de reembolso da cantina e será processado de acordo com essas políticas.<br><br>
+
+            4. Comportamento do Usuário<br>
+            4.1. É estritamente proibido utilizar nosso aplicativo para atividades ilegais, fraudulentas ou prejudiciais a terceiros.<br>
+            4.2. Não é permitido utilizar linguagem ofensiva, discriminatória ou de ódio em nossos serviços.<br><br>
+
+            5. Privacidade e Segurança<br>
+            5.1. Suas informações pessoais estão sujeitas à nossa Política de Privacidade, que você pode acessar no aplicativo.<br><br>
+
+            6. Propriedade Intelectual<br>
+            6.1. Todos os direitos de propriedade intelectual relacionados ao aplicativo, incluindo marcas registradas, direitos autorais e patentes, são de nossa propriedade ou licenciados para nós.<br><br>
+
+            7. Disposições Gerais<br>
+            7.1. Estes Termos de Uso constituem o acordo completo entre você e o aplicativo de Fila de Cantina e substituem quaisquer acordos anteriores.<br>
+            7.2. Este acordo será regido pelas leis do SÃO PAULO - BRASIL e eventuais litígios serão resolvidos nos tribunais competentes desta jurisdição.
+        </h2>
+    </div>
+</body>
+</html>
