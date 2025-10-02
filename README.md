@@ -36,12 +36,12 @@ O sistema possibilita que:
 
 ### 2️⃣ Baixar o projeto
 
-    Clone este repositório:
+Clone este repositório:
 
   ```bash
   git clone https://github.com/Cyzeone/sistema_cantina.git
   ```
-    ou faça o download do .zip e extraia.
+ou faça o download do .zip e extraia.
 
 ### 3️⃣ Configurar no XAMPP
 
@@ -129,13 +129,13 @@ The system allows:
 
 ### 2️⃣ Download the project
 
-    Clone this repository:
+Clone this repository:
 
 ```bash
 git clone https://github.com/Cyzeone/sistema_cantina.git
 ```
 
-    or download the .zip file and extract it.
+or download the .zip file and extract it.
 
 ### 3️⃣ Configure in XAMPP
 
